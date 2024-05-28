@@ -70,19 +70,49 @@
 
 					<img id='airport' class="phase1-img animate__animated" src="img/phase1/airport.svg"/>
 
-					<video id="transmissionLinesAnim" class="phase1-video animate__animated" src="video/Transmission Lines Anim.webm" muted></video>
-					<video id="planeAnim" class="phase1-video animate__animated" src="video/planeAnim.webm" muted></video>
-					<video id="truckAnim" class="phase1-video animate__animated" src="video/truckAnim.webm" muted></video>
-					<video id="trainAnim" class="phase1-video animate__animated" src="video/trainAnim.webm" muted></video>
-					<video id="carsAnim" class="phase1-video animate__animated" src="video/cars.webm" muted></video>
+					<video id="transmissionLinesAnim" class="phase1-video animate__animated" muted>
+						<source src="video/Transmission Lines Anim.webm" type="video/webm">
+						<source src="video/Transmission Lines Anim.mov" type="video/quicktime">
+					</video>
+
+					<video id="planeAnim" class="phase1-video animate__animated">
+						<source src="video/planeAnim.webm" type="video/webm">
+						<source src="video/planeAnim.mov" type="video/quicktime">
+					</video>
+
+					<video id="truckAnim" class="phase1-video animate__animated" muted>
+						<source src="video/truckAnim.webm" type="video/webm">
+						<source src="video/truckAnim.mov" type="video/quicktime">
+					</video>
+
+					<video id="trainAnim" class="phase1-video animate__animated" muted>
+						<source src="video/trainAnim.webm" type="video/webm">
+						<source src="video/trainAnim.mov" type="video/quicktime">
+					</video>
+
+					<video id="carsAnim" class="phase1-video animate__animated" muted>
+						<source src="video/cars.webm" type="video/webm">
+						<source src="video/cars.mov" type="video/quicktime">
+					</video>
 
 					<!-- Buttons last -->
 					<img id='btn-factory' class="phase1-img animate__animated btnFactory" src="img/phase1/btn-factory.svg" onclick="openPopUp('popUpVideo','Title of the Sample PopUp','Lorem ipsum dolor sit amet','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eros risus, cursus porttitor ullamcorper in, ultricies aliquam sem. Sed luctus turpis massa, id varius ante lacinia at. Nullam nec blandit augue. Integer gravida, ex eu aliquam condimentum, justo massa malesuada nibh, quis convallis lorem ante vel mauris. Fusce ipsum ante, feugiat id metus non, blandit vestibulum neque. Proin posuere ex nec purus volutpat sollicitudin. Morbi egestas augue eget tristique sollicitudin. Etiam tristique lectus sit amet massa hendrerit, ut consectetur ligula cursus. Aliquam nunc purus, accumsan non placerat ac, ullamcorper ut eros. Quisque fringilla lectus sit amet tortor ultrices, ac vehicula dolor semper. Fusce varius mattis tortor. Aliquam ornare dui tempus gravida molestie. Phasellus porta imperdiet turpis ut feugiat. Nam lorem arcu, porttitor non iaculis sed, laoreet eu metus.','video/popUp/Sample.mp4')"/>
 					<div class="phase2BtnHolder click-through" id="phase2BtnHolder">
 						<img id='btnPhase2' class="animate__animated btnPhase2" src="img/phase1/phase2.svg"/>
-						<video id="phase2Outline" class="phase1-video animate__animated click-through" src="video/phase2Outline.webm" muted></video>
-						<video id="phase2TextIn" class="phase1-video  animate__animated click-through" src="video/phase2TextIn.webm" muted></video>
-						<video id="phase2TextOut" class="phase1-video click-through" src="video/phase2TextOut.webm" muted></video>
+
+						<video id="phase2Outline" class="phase1-video animate__animated click-through" muted>
+							<source src="video/phase2Outline.webm" type="video/webm">
+							<source src="video/phase2Outline.mov" type="video/quikctime">
+						</video>
+
+						<video id="phase2TextIn" class="phase1-video  animate__animated click-through" muted>
+							<source src="video/phase2TextIn.webm" type="video/webm">
+							<source src="video/phase2TextIn.mov" type="video/quikctime">
+						</video>
+						<video id="phase2TextOut" class="phase1-video click-through" muted>
+							<source src="video/phase2TextOut.webm" type="video/webm">
+							<source src="video/phase2TextOut.mov" type="video/quikctime">
+						</video>
 					</div>
 
 
@@ -123,6 +153,7 @@
 			</div>
 		</div>
 
+		<script src="https://unpkg.com/bowser@2.7.0/es5.js"></script>
 		<script src="src/scrollbooster.min.js"></script>
 		<script src="src/scripts.js"></script>
 

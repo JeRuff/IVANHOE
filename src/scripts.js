@@ -1,4 +1,3 @@
-/* Smooth Scroll */
 
 const viewport = document.getElementById('container');
 const content = document.getElementById('parent');
@@ -71,6 +70,9 @@ const popUpSubtitle = document.getElementById("popUpSubtitle");
 const popUp = document.getElementById("popUp");
 const popUpContent = document.getElementById("popUpContent");
 
+const videoElementsArray = [plane, truck, transmissionLinesAnim,train,cars,phase2Outline,phase2TextIn,phase2TextOut];
+
+
 //Pop up video alignement
 var vidRatio = popUpVideo.clientHeight / popUpVideo.clientWidth;
 
@@ -112,7 +114,9 @@ const randomAnimationArray = [truck,transmissionLinesAnim,cars];
 
 window.addEventListener('load', (event) => {
     console.log('page is fully loaded');
-    document.querySelector('body').classList.add("loaded")
+    document.querySelector('body').classList.add("loaded");
+
+    swapVideoSource();
 
     fadeInCores();
     fadeInRoadSigns();
@@ -368,6 +372,47 @@ setInterval(function () {
     popUpContent.style.width = width + "px";
     popUpContent.style.height = width * vidRatio;
 }, 10);
+
+////////////////////////// VIDEO SOURCE UTILS //////////////////////////
+
+function swapVideoSource()
+{
+    var result = bowser.getParser(window.navigator.userAgent);
+    console.log("You are using " + result.parsedResult.browser.name + " v" + result.parsedResult.browser.version + " on " + result.parsedResult.os.name);
+
+    if(result.parsedResult.browser.name == "Safari")
+        useHEVC();
+    else
+        useWEBM();
+}
+
+function useWEBM(){
+
+    for (var i = 0; i < videoElementsArray.length; i++) {
+
+        videoElementsArray[i].src = videoElementsArray[i].getElementsByTagName("source")[0].src;
+        console.log(videoElementsArray[i].id + " source is : " + videoElementsArray[i].src);
+
+    }
+
+/*     plane.src = plane.getElementsByTagName("source")[0].src;
+    console.log("plane source is : " + plane.src); */
+}
+
+function useHEVC(){
+
+    for (var i = 0; i < videoElementsArray.length; i++) {
+
+        videoElementsArray[i].src = videoElementsArray[i].getElementsByTagName("source")[1].src;
+        console.log(videoElementsArray[i].id + " source is : " + videoElementsArray[i].src);
+
+    }
+
+/*     plane.src = plane.getElementsByTagName("source")[1].src;
+    console.log("plane source is : " + plane.src); */
+}
+
+
 
 
 ////////////////////////// UTILS ///////////////////////////////////////
