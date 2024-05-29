@@ -50,7 +50,7 @@ const cruzText = document.getElementById("cruzText");
 const exploreTextHolder = document.getElementById("santaCruzTextHolder").getElementsByTagName("div");
 
 //list of all animations
-const videoElementsArray = [plane, truck, transmissionLinesAnim,train,cars,phase2Outline,phase2TextIn,phase2TextOut];
+const videoElementsArray = [plane, truck, transmissionLinesAnim,train,cars,phase2Outline];
 //list of animations that have random spawn
 const randomAnimationArray = [truck,transmissionLinesAnim,cars];
 
@@ -129,8 +129,6 @@ function phase2Click(){
 
     //Stop Video
     stop(phase2Outline);
-    stop(phase2TextIn);
-    stop(phase2TextOut);
 
     btnPhase2Holder.addEventListener("animationend", () => {
         console.log("phase2 ended");
