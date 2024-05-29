@@ -8,28 +8,12 @@ const sb = new ScrollBooster({
     textSelection: false,
     scrollMode: 'transform',
     emulateScroll: true,
-    /*     onUpdate: (data) => {
-            // viewport.scrollLeft = data.position.x
-            // viewport.scrollTop = data.position.y
-            content.style.transform = `translate(${-data.position.x}px,${-data.position.y}px)`
-        }, */
     shouldScroll: (data, event) => {
         // disable scroll if clicked on button
         const isButton = event.target.nodeName.toLowerCase() === 'button';
         return !isButton;
     }
 });
-
-/* image.addEventListener('load', () => {
-    // set viewport position to the center of an image
-    const offsetX = image.scrollWidth - viewport.offsetWidth;
-    const offsetY = image.scrollHeight - viewport.offsetHeight;
-    sb.setPosition({
-        x: offsetX / 2,
-        y: offsetY / 2
-    });
-});
- */
 
 var currentPhase1Animation;
 
@@ -60,8 +44,17 @@ const phase2Outline = document.getElementById("phase2Outline");
 const phase2TextIn = document.getElementById("phase2TextIn");
 const phase2TextOut = document.getElementById("phase2TextOut");
 
-//POP UP//
+const exploreText = document.getElementById("exploreText");
+const santaText = document.getElementById("santaText");
+const cruzText = document.getElementById("cruzText");
+const exploreTextHolder = document.getElementById("santaCruzTextHolder").getElementsByTagName("div");
 
+//list of all animations
+const videoElementsArray = [plane, truck, transmissionLinesAnim,train,cars,phase2Outline,phase2TextIn,phase2TextOut];
+//list of animations that have random spawn
+const randomAnimationArray = [truck,transmissionLinesAnim,cars];
+
+//POP UP//
 const hoverBackground = document.getElementById("openPopup");
 const popUpText = document.getElementById("popUpText");
 const popUpTitle = document.getElementById("popUpTitle");
@@ -70,11 +63,9 @@ const popUpSubtitle = document.getElementById("popUpSubtitle");
 const popUp = document.getElementById("popUp");
 const popUpContent = document.getElementById("popUpContent");
 
-const videoElementsArray = [plane, truck, transmissionLinesAnim,train,cars,phase2Outline,phase2TextIn,phase2TextOut];
-
-
 //Pop up video alignement
 var vidRatio = popUpVideo.clientHeight / popUpVideo.clientWidth;
+
 
 //EVENTS//
 plane.addEventListener("ended", planeAnimHandler);
@@ -99,24 +90,26 @@ cars.addEventListener("ended", function(e){
     console.log(e.target.id);      
    });
 
-btnPhase2.addEventListener("click", startPhase2);
+btnPhase2.addEventListener("click", phase2Click);
 
 phase2Outline.addEventListener("ended", onPhase2OutlineEnded);
-phase2TextIn.addEventListener("ended",onPhase2TextInEnded); 
-phase2TextOut.addEventListener("ended",onPhase2TextOutEnded);
-
 btnFactory.addEventListener("mouseup", factoryMouseUp);
 btnFactory.addEventListener("click", factoryClick);
 
-//only list animations that have random spawn
-const randomAnimationArray = [truck,transmissionLinesAnim,cars];
+//Only adding event listener after first time play
+cruzText.addEventListener("animationend", function(){
+    console.log("text animation from handler");
+    exploreTextAnim(exploreTextHolder,Math.floor(Math.random() * (5000 - 1000) + 5000));
+});
 
 
 window.addEventListener('load', (event) => {
     console.log('page is fully loaded');
     document.querySelector('body').classList.add("loaded");
 
+    //Check OS and Browser and load animations accordingly
     swapVideoSource();
+
 
     fadeInCores();
     fadeInRoadSigns();
@@ -125,11 +118,11 @@ window.addEventListener('load', (event) => {
     //Start Phase 2 Button anim loop
     initPhase2Anim();
 
-    //arbitratry first playing animation
+    //Plane animations + random loop of other animations
     fadeInAnim(plane,1000);
 });
 
-function startPhase2(){
+function phase2Click(){
     console.log("start phase 2");
     btnPhase2Holder = document.getElementById("phase2BtnHolder");
     btnPhase2Holder.classList.add("slide-fwd-center");
@@ -193,13 +186,10 @@ function planeAnimHandler(){
 }
 
 function trainAnimHandler(){
-
 console.log("train will play in 15000  ms");
-
-// Only plays every 15 seconds
+    // Only plays every 15 seconds
     stop(train);
-
-    //wait random and play again
+    //wait delay and play again
     var int = setInterval(() => {
         play(train);
     }, 15000);
@@ -209,10 +199,8 @@ console.log("train will play in 15000  ms");
 }
 
 function onPhase2OutlineEnded(){
-
     var randomDelay = Math.floor(Math.random() * 10000);
     stop(phase2Outline);
-
     //wait random and play again
     var int = setInterval(() => {
         play(phase2Outline);
@@ -223,44 +211,13 @@ function onPhase2OutlineEnded(){
 
 }
 
-function onPhase2TextInEnded(){
-    var randomDelay = Math.floor(Math.random() * 10000);
-
-    //wait random and play out
-    var int = setInterval(() => {
-        play(phase2TextOut);
-        stop(phase2TextIn);
-    }, randomDelay);
-    setTimeout(() => {
-        clearInterval(int);
-    }, randomDelay);
-
-}
-
-function onPhase2TextOutEnded(){
-    var randomDelay = Math.floor(Math.random() * 5000);
-
-    //wait random and play in
-    var int = setInterval(() => {
-        play(phase2TextIn);
-        stop(phase2TextOut);
-    }, randomDelay);
-    setTimeout(() => {
-        clearInterval(int);
-    }, randomDelay);
-
-}
-
 function initPhase2Anim(){
-
     fadeInIcon(btnPhase2,10000);
-    fadeInAnim(phase2TextIn,11000);
-    fadeInAnim(phase2Outline,11500);
-
+    exploreTextAnim(exploreTextHolder, 11000);
+    fadeInAnim(phase2Outline,12000);
 }
 
 function fadeInCores(){
-
     fadeInCity(compass,1000);
     fadeInCity(casaGrande,1500);
     fadeInCity(phoenix,3000);
@@ -313,6 +270,7 @@ function fadeInIcon(element, delay){
 }
 
 function fadeInAnim(element, delay){
+    console.log("playing " + element.id + " in " + delay)
     var int = setInterval(() => {
         element.className += " show-phase1-video animate__fadeIn";
         element.play();
@@ -322,20 +280,39 @@ function fadeInAnim(element, delay){
     }, delay);
 }
 
-function fadeOutAnim(element){
-    element.classList.remove("show-phase1-video");
-    element.classList.remove("animate__fadeIn");
-    stop(element);
-}
-
-function fadeInPhase2Anim(element, delay){
+function fadeInExploreText(element, delay){
     var int = setInterval(() => {
-        element.className += " show-phase1-video animate__fadeIn";
+        element.classList.add("animate__zoomIn");
+        element.classList.remove("animate__zoomOut");
     }, delay);
     setTimeout(() => {
         clearInterval(int);
     }, delay);
 }
+
+function fadeOutExploreText(element, delay){
+    var int = setInterval(() => {
+        element.classList.add("animate__zoomOut");
+        element.classList.remove("animate__zoomIn");
+    }, delay);
+    setTimeout(() => {
+        clearInterval(int);
+    }, delay);
+}
+
+
+function exploreTextAnim(elementArray,delay){
+
+    for (var i = 0; i < elementArray.length; i++) {
+        if(elementArray[i].classList.contains("animate__zoomOut"))
+            fadeInExploreText(elementArray[i],delay*((i/20)+1));
+        else
+            fadeOutExploreText(elementArray[i],delay*((i/20)+1));
+    }
+}
+
+
+
 
 
 //POP UP//
@@ -372,67 +349,3 @@ setInterval(function () {
     popUpContent.style.width = width + "px";
     popUpContent.style.height = width * vidRatio;
 }, 10);
-
-////////////////////////// VIDEO SOURCE UTILS //////////////////////////
-
-function swapVideoSource()
-{
-    var result = bowser.getParser(window.navigator.userAgent);
-    console.log("You are using " + result.parsedResult.browser.name + " v" + result.parsedResult.browser.version + " on " + result.parsedResult.os.name);
-
-    if(result.parsedResult.browser.name == "Safari")
-        useHEVC();
-    else
-        useWEBM();
-}
-
-function useWEBM(){
-
-    for (var i = 0; i < videoElementsArray.length; i++) {
-
-        videoElementsArray[i].src = videoElementsArray[i].getElementsByTagName("source")[0].src;
-        console.log(videoElementsArray[i].id + " source is : " + videoElementsArray[i].src);
-
-    }
-
-/*     plane.src = plane.getElementsByTagName("source")[0].src;
-    console.log("plane source is : " + plane.src); */
-}
-
-function useHEVC(){
-
-    for (var i = 0; i < videoElementsArray.length; i++) {
-
-        videoElementsArray[i].src = videoElementsArray[i].getElementsByTagName("source")[1].src;
-        console.log(videoElementsArray[i].id + " source is : " + videoElementsArray[i].src);
-
-    }
-
-/*     plane.src = plane.getElementsByTagName("source")[1].src;
-    console.log("plane source is : " + plane.src); */
-}
-
-
-
-
-////////////////////////// UTILS ///////////////////////////////////////
-
-function stop(videoElement){
-    videoElement.pause();
-    videoElement.currentTime = 0;
-    videoElement.classList.remove("show-phase1-video");
-    videoElement.classList.remove("animate__fadeIn");
-}
-
-function play(videoElement){
-    videoElement.classList.add("show-phase1-video");
-    videoElement.classList.add("animate__fadeIn");
-    videoElement.play();
-}
-
-function randomAnimationSelect(array){
-    const index = Math.floor(Math.random() * array.length);
-    const animation = array[index];
-
-    return animation;
-}

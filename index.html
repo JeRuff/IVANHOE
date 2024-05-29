@@ -75,9 +75,9 @@
 						<source src="video/Transmission Lines Anim.mov" type="video/quicktime">
 					</video>
 
-					<video id="planeAnim" class="phase1-video animate__animated">
-						<source src="video/planeAnim.webm" type="video/webm">
-						<source src="video/planeAnim.mov" type="video/quicktime">
+					<video id="planeAnim" class="phase1-video animate__animated" preload="auto" muted>
+ 						<source src="./video/planeAnim.webm" type="video/webm" codec="VP9">
+ 						<source src="./video/planeAnim.mov" type="video/quicktime">
 					</video>
 
 					<video id="truckAnim" class="phase1-video animate__animated" muted>
@@ -102,17 +102,29 @@
 
 						<video id="phase2Outline" class="phase1-video animate__animated click-through" muted>
 							<source src="video/phase2Outline.webm" type="video/webm">
-							<source src="video/phase2Outline.mov" type="video/quikctime">
+							<source src="video/phase2Outline.mov" type="video/mp4">
 						</video>
 
 						<video id="phase2TextIn" class="phase1-video  animate__animated click-through" muted>
 							<source src="video/phase2TextIn.webm" type="video/webm">
-							<source src="video/phase2TextIn.mov" type="video/quikctime">
+							<source src="video/phase2TextIn.mov" type="video/mp4">
 						</video>
 						<video id="phase2TextOut" class="phase1-video click-through" muted>
 							<source src="video/phase2TextOut.webm" type="video/webm">
-							<source src="video/phase2TextOut.mov" type="video/quikctime">
+							<source src="video/phase2TextOut.mov" type="video/mp4">
 						</video>
+					</div>
+
+					<div id="santaCruzTextHolder" class="santaCruzTextHolder inter-semibold">
+						<div id="exploreText" class="animate__animated santaCruzText animate__fast animate__zoomOut" style="transform-origin: 70% 150%;" >
+							Explore
+						</div>
+						<div id="santaText" class="animate__animated santaCruzText animate__fast animate__zoomOut" style="transform-origin: 70% 70%;">
+							Santa
+						</div>
+						<div id="cruzText" class="animate__animated santaCruzText animate__fast animate__zoomOut" style="transform-origin: 70% -10%;">
+							Cruz
+						</div>
 					</div>
 
 
@@ -155,6 +167,8 @@
 
 		<script src="https://unpkg.com/bowser@2.7.0/es5.js"></script>
 		<script src="src/scrollbooster.min.js"></script>
+		<script src="src/animations.js"></script>
+		<script src="src/utils.js"></script>
 		<script src="src/scripts.js"></script>
 
 	</body>

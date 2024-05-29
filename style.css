@@ -1,15 +1,4 @@
-/* FONTS */
-/* @font-face {
-  font-family: AvenirLT65Medium;
-  src: url("./fonts/Avenir\ LT\ 65\ Medium.ttf");
-  font-weight: normal;
-}
-@font-face {
-  font-family: AvenirLT65Medium;
-  src: url("./fonts/Avenir\ LT\ 95\ Black.ttf");
-  font-weight: bold;
-} */
-
+/* FONT */
 .inter-regular{
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
@@ -25,6 +14,30 @@
   font-style: normal;
   font-variation-settings: "slnt" 0;
 }
+
+.inter-semibold{
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+/* Explore Santa Cruz */
+
+.santaCruzTextHolder{
+    position: absolute;
+    top: 42.5%;
+    left: 44.1%;
+}
+
+.santaCruzText{
+  font-size: 1.45em;
+  color: white;
+  margin: -4px 0 0 0;
+}
+
+/* ================== */
 
 body {
   -webkit-touch-callout: none;
