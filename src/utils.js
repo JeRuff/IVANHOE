@@ -47,3 +47,9 @@ function randomAnimationSelect(array){
 
     return animation;
 }
+
+//////////////// FIT Text ////////////////////////
+
+window.fitText( exploreText,0.5 );
+window.fitText( santaText,0.5 );
+window.fitText( cruzText,0.5 );
