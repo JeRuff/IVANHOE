@@ -5,8 +5,8 @@ function swapVideoSource()
     var result = bowser.getParser(window.navigator.userAgent);
     console.log("You are using " + result.parsedResult.browser.name + " v" + result.parsedResult.browser.version + " on " + result.parsedResult.os.name);
 
-    if(result.parsedResult.browser.name == "Safari" && result.parsedResult.os.name != "iOS")
-        {useHEVC();}        
+    if(result.parsedResult.browser.name == "Safari" || result.parsedResult.os.name == "iOS")
+        {useMOV();}        
     else 
         {useWEBM();}
 }
@@ -18,11 +18,19 @@ function useWEBM(){
     }
 }
 
-function useHEVC(){
+function useMOV(){
     for (var i = 0; i < videoElementsArray.length; i++) {
         console.log(videoElementsArray[i].getElementsByTagName("source")[1].src);
         console.log(videoElementsArray[i].id + " source is : " + videoElementsArray[i].src);
         videoElementsArray[i].src = videoElementsArray[i].getElementsByTagName("source")[1].src;
+    }
+}
+
+function useHEVC(){
+    for (var i = 0; i < videoElementsArray.length; i++) {
+        console.log(videoElementsArray[i].getElementsByTagName("source")[2].src);
+        console.log(videoElementsArray[i].id + " source is : " + videoElementsArray[i].src);
+        videoElementsArray[i].src = videoElementsArray[i].getElementsByTagName("source")[2].src;
     }
 }
 
