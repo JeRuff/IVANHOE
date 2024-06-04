@@ -32,7 +32,7 @@ const roadsign387 = document.getElementById("road387");
 
 const airport = document.getElementById("airport");
 const btnFactory = document.getElementById("btn-factory");
-const btnImgPhase2 = document.getElementById("btnImgPhase2");
+const btnPhase2 = document.getElementById("btnPhase2");
 const btnPhase2Holder = document.getElementById("btnPhase2Holder");
 
 

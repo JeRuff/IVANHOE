@@ -2,11 +2,7 @@ function phase2Click(){
     console.log("start phase 2");
      //Stop Video
     stop(phase2Outline);
-
-/*  btnPhase2.style.opacity = 1
-    btnPhase2.classList.remove("animate__animated");
-    btnPhase2.classList.remove("animate__fadeIn"); */
-
+    
     btnPhase2Holder.classList.add("slide-fwd-center");
     exploreTextHolder.classList.add("fade-out");
 }
