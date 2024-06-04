@@ -29,13 +29,13 @@
     width: 10%;
     height: 12%;
     top: 41.5%;
-    left: 44.5%;
+    left: 46%;
     position: absolute;
 }
 
 .santaCruzText{
   font-size: 1.5vw;
-  color: white;
+  color: rgb(255, 255, 255);
 /*   margin: -4px 0 0 0;
  */  height: 33%;
 }

@@ -40,7 +40,8 @@ const plane = document.getElementById("planeAnim");
 const truck = document.getElementById("truckAnim");
 const transmissionLinesAnim = document.getElementById("transmissionLinesAnim");
 const train = document.getElementById("trainAnim");
-const cars = document.getElementById("carsAnim");
+const car01 = document.getElementById("car01Anim");
+const car02 = document.getElementById("car02Anim");
 
 const phase2Outline = document.getElementById("phase2Outline");
 const phase2TextIn = document.getElementById("phase2TextIn");
@@ -53,9 +54,7 @@ const exploreTextArray = document.getElementById("santaCruzTextHolder").getEleme
 const exploreTextHolder = document.getElementById("santaCruzTextHolder");
 
 //list of all animations
-const videoElementsArray = [plane, truck, transmissionLinesAnim,train,cars,phase2Outline];
-//list of animations that have random spawn
-const randomAnimationArray = [truck,transmissionLinesAnim,cars];
+const videoElementsArray = [plane, truck, transmissionLinesAnim,train,car01,car02,phase2Outline];
 
 //POP UP//
 const hoverBackground = document.getElementById("openPopup");

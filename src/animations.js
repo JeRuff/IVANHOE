@@ -36,13 +36,9 @@ function playNextAnim(element){
     play(randomAnimationSelect(tempArray));
 }
 
-function planeAnimHandler(){
+function onPlaneAnimEnded(){
 
     //Plane is first anim, trigger other anims now to get the ball rolling ;)
-    playNextAnim(randomAnimationSelect(randomAnimationArray));
-    trainAnimHandler();
-
-
     //Only repeat every 15~25 seconds
     var randomDelay = Math.floor(Math.random() * (25000 - 15000) + 15000);
     console.log("plane will play in " + randomDelay + " ms");
@@ -57,17 +53,69 @@ function planeAnimHandler(){
     }, randomDelay);
 }
 
-function trainAnimHandler(){
-console.log("train will play in 15000  ms");
-    // Only plays every 15 seconds
+function onTransmissionLinesEnded(){
+    console.log("transmissionLine will play in 25000  ms");
+    // Only plays every 25 seconds
+    stop(transmissionLinesAnim);
+    //wait delay and play again
+    var int = setInterval(() => {
+        play(transmissionLinesAnim);
+    }, 25000);
+    setTimeout(() => {
+        clearInterval(int);
+    }, 25000);
+}
+
+function onTruckEnded(){
+    console.log("truckAnim will play in 18000 ms");
+    // Only plays every 18 seconds
+    stop(truck);
+    //wait delay and play again
+    var int = setInterval(() => {
+        play(truck);
+    }, 18000);
+    setTimeout(() => {
+        clearInterval(int);
+    }, 18000);
+}
+
+function onCar01Ended(){
+    console.log("Car01 will play in 18000 ms");
+    // Only plays every 18 seconds
+    stop(car01);
+    //wait delay and play again
+    var int = setInterval(() => {
+        play(car01);
+    }, 18000);
+    setTimeout(() => {
+        clearInterval(int);
+    }, 18000);
+}
+
+function onCar02Ended(){
+    console.log("Car02 will play in 12000 ms");
+    // Only plays every 18 seconds
+    stop(car02);
+    //wait delay and play again
+    var int = setInterval(() => {
+        play(car02);
+    }, 12000);
+    setTimeout(() => {
+        clearInterval(int);
+    }, 12000);
+}
+
+function onTrainAnimEnded(){
+    console.log("Train will play in 20000 ms");
+    // Only plays every 18 seconds
     stop(train);
     //wait delay and play again
     var int = setInterval(() => {
         play(train);
-    }, 15000);
+    }, 20000);
     setTimeout(() => {
         clearInterval(int);
-    }, 15000);
+    }, 20000);
 }
 
 function onPhase2OutlineEnded(){
@@ -85,7 +133,7 @@ function onPhase2OutlineEnded(){
 
 function initPhase2Anim(){
     fadeInIcon(btnImgPhase2,10000);
-    exploreTextAnim(exploreTextArray, 11000);
+    exploreTextAnim(exploreTextArray, 11000, "zoomOut");
     fadeInAnim(phase2Outline,12000);
 }
 
@@ -96,6 +144,11 @@ function fadeInCores(){
     fadeInCity(tucson,4000);
     fadeInCity(roads,8000);
     fadeInCity(transmissionLines,9000);
+    fadeInAnim(transmissionLinesAnim,9000);
+    fadeInAnim(truck,10000);
+    fadeInAnim(car01,13000);
+    fadeInAnim(car02,18000);
+    fadeInAnim(train,19000);
 }
 
 function fadeInRoadSigns(){
@@ -173,10 +226,10 @@ function fadeOutExploreText(element, delay){
 }
 
 
-function exploreTextAnim(elementArray,delay){
-
+function exploreTextAnim(elementArray,delay,anim){
+    console.log("text anim " + anim);
     for (var i = 0; i < elementArray.length; i++) {
-        if(elementArray[i].classList.contains("animate__zoomOut"))
+        if(anim == "zoomOut")
             fadeInExploreText(elementArray[i],delay*((i/20)+1));
         else
             fadeOutExploreText(elementArray[i],delay*((i/20)+1));
