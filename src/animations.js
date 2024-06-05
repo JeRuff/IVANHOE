@@ -2,7 +2,7 @@ function phase2Click(){
     console.log("start phase 2");
      //Stop Video
     stop(phase2Outline);
-    
+
     btnPhase2Holder.classList.add("slide-fwd-center");
     exploreTextHolder.classList.add("fade-out");
 }
@@ -32,6 +32,19 @@ function playNextAnim(element){
     play(randomAnimationSelect(tempArray));
 }
 
+function onAnimationEnded(element, delay){
+    console.log(element.id + " will play in " + delay + " ms");
+    // Only plays every 25 seconds
+    stop(element);
+    //wait delay and play again
+    var int = setInterval(() => {
+        play(element);
+    }, 25000);
+    setTimeout(() => {
+        clearInterval(int);
+    }, 25000);
+}
+
 function onPlaneAnimEnded(){
 
     //Plane is first anim, trigger other anims now to get the ball rolling ;)
@@ -47,71 +60,6 @@ function onPlaneAnimEnded(){
     setTimeout(() => {
         clearInterval(int);
     }, randomDelay);
-}
-
-function onTransmissionLinesEnded(){
-    console.log("transmissionLine will play in 25000  ms");
-    // Only plays every 25 seconds
-    stop(transmissionLinesAnim);
-    //wait delay and play again
-    var int = setInterval(() => {
-        play(transmissionLinesAnim);
-    }, 25000);
-    setTimeout(() => {
-        clearInterval(int);
-    }, 25000);
-}
-
-function onTruckEnded(){
-    console.log("truckAnim will play in 18000 ms");
-    // Only plays every 18 seconds
-    stop(truck);
-    //wait delay and play again
-    var int = setInterval(() => {
-        play(truck);
-    }, 18000);
-    setTimeout(() => {
-        clearInterval(int);
-    }, 18000);
-}
-
-function onCar01Ended(){
-    console.log("Car01 will play in 18000 ms");
-    // Only plays every 18 seconds
-    stop(car01);
-    //wait delay and play again
-    var int = setInterval(() => {
-        play(car01);
-    }, 18000);
-    setTimeout(() => {
-        clearInterval(int);
-    }, 18000);
-}
-
-function onCar02Ended(){
-    console.log("Car02 will play in 12000 ms");
-    // Only plays every 18 seconds
-    stop(car02);
-    //wait delay and play again
-    var int = setInterval(() => {
-        play(car02);
-    }, 12000);
-    setTimeout(() => {
-        clearInterval(int);
-    }, 12000);
-}
-
-function onTrainAnimEnded(){
-    console.log("Train will play in 20000 ms");
-    // Only plays every 18 seconds
-    stop(train);
-    //wait delay and play again
-    var int = setInterval(() => {
-        play(train);
-    }, 20000);
-    setTimeout(() => {
-        clearInterval(int);
-    }, 20000);
 }
 
 function onPhase2OutlineEnded(){

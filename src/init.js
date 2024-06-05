@@ -65,9 +65,6 @@ const popUpSubtitle = document.getElementById("popUpSubtitle");
 const popUp = document.getElementById("popUp");
 const popUpContent = document.getElementById("popUpContent");
 
-//Pop up video alignement
-var vidRatio = popUpVideo.clientHeight / popUpVideo.clientWidth;
-
 // Page is Loaded, Start Presentation
 window.addEventListener('load', (event) => {
     console.log('page is fully loaded');
@@ -103,21 +100,27 @@ function openPopUp(element, title, subtitle, text, source) {
 
     console.log("OpenPopUp : " + source);
 
+
     popUpText.innerText = text;
     popUpTitle.innerText = title;
     popUpVideo.src = source;
+
 /*     popUpSubtitle.innerText = subtitle;
- */    popUpVideo.play();
+ */ popUpVideo.play();
     hoverBackground.style.display = "block";
 
     hoverBackground.classList.add("animate__zoomIn");
     hoverBackground.classList.remove("animate__zoomOut");
     hoverBackground.classList.remove('click-through');
 
+    setInterval(function () {
+        //Pop up video alignement
+        var vidRatio = popUpVideo.clientHeight / popUpVideo.clientWidth;
+        var width = popUpVideo.clientWidth;
+        popUpContent.style.width = width + "px";
+        popUpContent.style.height = width * vidRatio;
+    }, 1);
+
 }
 
-setInterval(function () {
-    var width = popUpVideo.clientWidth;
-    popUpContent.style.width = width + "px";
-    popUpContent.style.height = width * vidRatio;
-}, 10);
+
