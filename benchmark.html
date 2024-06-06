@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <title>
+        Browser Not Supported
+    </title>
+</head>
+<style>
+body {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+</style>
+
+<body>
+    <div id="container" class="app">
+        <div id="parent" class="app-inner">
+            <div id="webmTest" style="width: 100%; height: 100%; position: relative;">
+                <img id='roads' style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;" src="img/phase1/roads.svg"/>
+                <video  style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;" preload="auto" loop autoplay muted>
+                    <source src="./video/planeAnim.webm" type="video/webm" codec="VP9">
+               </video>
+            </div>
+
+            <div id="movTest" style="width: 100%; height: 100%; position: relative;">
+                <img id='roads' style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;" src="img/phase1/roads.svg"/>
+                <video   preload="auto" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;" loop autoplay muted>
+                    <source src="./video/planeAnim.mov" type="video/quicktime">
+               </video>
+            </div>
+
+            <div id="mp4Test" style="width: 100%; height: 100%; position: relative;">
+                <img id='roads' style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;" src="img/phase1/roads.svg"/>
+                <video  preload="auto" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;" loop autoplay muted>
+                   <source src="./video/planeAnim.mp4" type="video/mp4; codecs=hevc">
+               </video>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

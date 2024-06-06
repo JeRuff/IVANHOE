@@ -1,5 +1,7 @@
 //EVENTS//
-plane.addEventListener("ended", onPlaneAnimEnded);
+/* plane.addEventListener("ended", onPlaneAnimEnded);
+ */
+plane.addEventListener("animationend", onPlaneAnimationEnded, false);
 btnPhase2.addEventListener("click", phase2Click);
 phase2Outline.addEventListener("ended", onPhase2OutlineEnded);
 btnFactory.addEventListener("mouseup", factoryMouseUp);

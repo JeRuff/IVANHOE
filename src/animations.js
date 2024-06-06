@@ -45,7 +45,28 @@ function onAnimationEnded(element, delay){
     }, 25000);
 }
 
-function onPlaneAnimEnded(){
+function onPlaneAnimationEnded(event)
+{
+    if(event.type == "animationend")
+    {
+        plane.classList.remove("planeAnim");
+        //Plane is first anim, trigger other anims now to get the ball rolling ;)
+        //Only repeat every 15~25 seconds
+        var randomDelay = Math.floor(Math.random() * (25000 - 15000) + 15000);
+        console.log("plane will play in " + randomDelay + " ms");
+        //stop(plane);
+
+        //wait random and play again
+        var int = setInterval(() => {
+            plane.classList.add("planeAnim");
+        }, randomDelay);
+        setTimeout(() => {
+            clearInterval(int);
+        }, randomDelay);
+    }
+}
+
+/* function onPlaneAnimEnded(){
 
     //Plane is first anim, trigger other anims now to get the ball rolling ;)
     //Only repeat every 15~25 seconds
@@ -60,7 +81,7 @@ function onPlaneAnimEnded(){
     setTimeout(() => {
         clearInterval(int);
     }, randomDelay);
-}
+} */
 
 function onPhase2OutlineEnded(){
     var randomDelay = Math.floor(Math.random() * 10000);
@@ -93,6 +114,8 @@ function fadeInCores(){
     fadeInAnim(car01,13000);
     fadeInAnim(car02,18000);
     fadeInAnim(train,19000);
+
+    fadeInCSSAnim(plane,"planeAnim",4000);
 }
 
 function fadeInRoadSigns(){
@@ -143,6 +166,16 @@ function fadeInAnim(element, delay){
     var int = setInterval(() => {
         element.className += " show-phase1-video animate__fadeIn";
         element.play();
+    }, delay);
+    setTimeout(() => {
+        clearInterval(int);
+    }, delay);
+}
+
+function fadeInCSSAnim(element,animClass, delay){
+    console.log("playing " + element.id + " in " + delay)
+    var int = setInterval(() => {
+        element.classList.add(animClass);
     }, delay);
     setTimeout(() => {
         clearInterval(int);

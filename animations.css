@@ -1,0 +1,58 @@
+.planeAnim{
+    -webkit-animation: planeAnim 10s normal ease-in-out;
+    animation: planeAnim 10s normal ease-in-out;
+}
+
+.planeSVG{
+    width: 10%;
+    height: 10%;
+    position: absolute;
+    left: 60.6%;
+    top: 110%;
+    transform-origin: center center;
+    opacity: 0;
+}
+
+@-webkit-keyframes planeAnim {
+    0% {
+        -webkit-transform: translate(0%, 0%) scale(1,1);
+                transform: translate(0%, 0%) scale(1,1);
+      }
+      100% {
+        -webkit-transform: translate(0%, -10%) scale(1,1);
+                transform: translate(0%, -10%)scale(1,1);
+      }
+  }
+  @keyframes planeAnim {
+    0% {
+      -webkit-transform: translate(0%, 0%) scale(1,1);
+              transform: translate(0%, 0%) scale(1,1);
+        opacity: 0;
+
+    }
+
+    20% { 
+        opacity: 1;
+    }
+
+    40% {
+      -webkit-transform: translate(0%, -875%) scale(.4,.4);
+              transform: translate(0%, -875%) scale(.4,.4);
+    }
+
+    60% {
+        -webkit-transform: translate(0%, -875%) scale(.4,.4);
+                transform: translate(0%, -875%) scale(.4,.4);
+        opacity: 1;
+      }
+    85%
+    {
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translate(0%, -1500%) scale(1,1);
+                transform: translate(0%, -1500%) scale(1,1);
+      } 
+  }
+

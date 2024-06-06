@@ -36,7 +36,9 @@ const btnPhase2 = document.getElementById("btnPhase2");
 const btnPhase2Holder = document.getElementById("btnPhase2Holder");
 
 
-const plane = document.getElementById("planeAnim");
+/* const plane = document.getElementById("planeAnim");
+ */
+const plane = document.getElementById("planeSVG");
 const truck = document.getElementById("truckAnim");
 const transmissionLinesAnim = document.getElementById("transmissionLinesAnim");
 const train = document.getElementById("trainAnim");
@@ -54,7 +56,7 @@ const exploreTextArray = document.getElementById("santaCruzTextHolder").getEleme
 const exploreTextHolder = document.getElementById("santaCruzTextHolder");
 
 //list of all animations
-const videoElementsArray = [plane, truck, transmissionLinesAnim,train,car01,car02,phase2Outline];
+const videoElementsArray = [truck, transmissionLinesAnim,train,car01,car02,phase2Outline];
 
 //POP UP//
 const hoverBackground = document.getElementById("openPopup");
@@ -81,8 +83,8 @@ window.addEventListener('load', (event) => {
     initPhase2Anim();
 
     //Plane animations + random loop of other animations
-    fadeInAnim(plane,1000);
-});
+/*     fadeInAnim(plane,1000);
+ */});
 
 //POP UP//
 
@@ -99,7 +101,6 @@ function closePopUp() {
 function openPopUp(element, title, subtitle, text, source) {
 
     console.log("OpenPopUp : " + source);
-
 
     popUpText.innerText = text;
     popUpTitle.innerText = title;
