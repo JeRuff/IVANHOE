@@ -39,13 +39,16 @@ const btnPhase2Holder = document.getElementById("btnPhase2Holder");
 /* const plane = document.getElementById("planeAnim");
  */
 const plane = document.getElementById("planeSVG");
+
 const truck = document.getElementById("truckAnim");
 const transmissionLinesAnim = document.getElementById("transmissionLinesAnim");
 const train = document.getElementById("trainAnim");
 const car01 = document.getElementById("car01Anim");
 const car02 = document.getElementById("car02Anim");
 
-const phase2Outline = document.getElementById("phase2Outline");
+//const phase2Outline = document.getElementById("phase2Outline");
+const santaCruzOutlineSVG = document.getElementById("outlineSVG");
+
 const phase2TextIn = document.getElementById("phase2TextIn");
 const phase2TextOut = document.getElementById("phase2TextOut");
 
@@ -56,7 +59,7 @@ const exploreTextArray = document.getElementById("santaCruzTextHolder").getEleme
 const exploreTextHolder = document.getElementById("santaCruzTextHolder");
 
 //list of all animations
-const videoElementsArray = [truck, transmissionLinesAnim,train,car01,car02,phase2Outline];
+const videoElementsArray = [car01,car02];
 
 //POP UP//
 const hoverBackground = document.getElementById("openPopup");

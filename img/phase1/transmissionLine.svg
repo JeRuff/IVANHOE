@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 608.5 464.99">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #29a7de;
+        stroke-miterlimit: 10;
+        stroke-width: 5px;
+      }
+    </style>
+  </defs>
+  <g id="Transmission_Lines" data-name="Transmission Lines">
+    <path id="transmissionLines" class="cls-1" d="m0,120.99h120.66l145.34,118h107l31.5,18.5v105l52.46,101.35M59.5,121.49v11.27l22,27.73v183l10.25,12.75h97.92v8.76h204.83l23,4.49,12-5h82m-141-165.4v-26.6l57.78,144h180.22M364.96,1.84l44.43,40.65h198.1m-228.54,199.85v-37.12L111.96,2.84"/>
+  </g>
+</svg>

@@ -72,31 +72,11 @@
 
 					<img id='airport' class="phase1-img animate__animated" src="img/phase1/airport.svg"/>
 					<img id='planeSVG' class="planeSVG" src="img/icons/planeSVG.svg"/>
+					<img id='trainSVG' class="trainSVG trainSVGAnim" src="img/icons/trainSVG.svg"/>
 
-					<video id="transmissionLinesAnim" class="phase1-video animate__animated" muted>
-						<source src="video/Transmission Lines Anim.webm" type="video/webm">
-						<source src="video/Transmission Lines Anim.mov" type="video/quicktime">
-						<source src="video/Transmission Lines Anim.mp4" type="video/mp4; codecs=hevc">
-					</video>
-
-<!-- 					<video id="planeAnim" class="phase1-video animate__animated" preload="auto" muted>
- 						<source src="./video/planeAnim.webm" type="video/webm" codec="VP9">
- 						<source src="./video/planeAnim.mov" type="video/quicktime">
-						<source src="./video/planeAnim.mp4" type="video/mp4; codecs=hevc">
-
-					</video> -->
-
-					<video id="truckAnim" class="phase1-video animate__animated" muted>
-						<source src="./video/truckAnim.webm" type="video/webm" codec="VP9">
-						<source src="./video/truckAnim.mov" type="video/quicktime">
-					   <source src="./video/truckAnim.mp4" type="video/mp4; codecs=hevc">
-					</video>
-
-					<video id="trainAnim" class="phase1-video animate__animated" muted>
-						<source src="./video/trainAnim.webm" type="video/webm" codec="VP9">
-						<source src="./video/trainAnim.mov" type="video/quicktime">
-					   <source src="./video/trainAnim.mp4" type="video/mp4; codecs=hevc">
-					</video>
+					<div class="truckSVG truckSVGPositionAnim">
+						<img id='truckSVG' class="truckSVGRotateAnim" src="img/icons/truckSVG.svg"/>
+					</div>
 
 					<video id="car01Anim" class="phase1-video animate__animated" muted>
 						<source src="./video/car-01.webm" type="video/webm">
@@ -111,17 +91,13 @@
 						<source src="./video/car-02.mp4" type="video/mp4; codecs=hevc">
 					</video>
 
+					<object id='transmissionLinesSVG' type="image/svg+xml" class="transmissionLines" data="img/phase1/transmissionLineSVG.svg"></object>
+
 					<!-- Buttons last -->
 					<img id='btn-factory' class="phase1-img animate__animated btnFactory" src="img/phase1/btn-factory.svg" onclick="openPopUp('popUpVideo','Title of the Sample PopUp','Lorem ipsum dolor sit amet','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eros risus, cursus porttitor ullamcorper in, ultricies aliquam sem. Sed luctus turpis massa, id varius ante lacinia at. Nullam nec blandit augue. Integer gravida, ex eu aliquam condimentum, justo massa malesuada nibh, quis convallis lorem ante vel mauris. Fusce ipsum ante, feugiat id metus non, blandit vestibulum neque. Proin posuere ex nec purus volutpat sollicitudin. Morbi egestas augue eget tristique sollicitudin. Etiam tristique lectus sit amet massa hendrerit, ut consectetur ligula cursus. Aliquam nunc purus, accumsan non placerat ac, ullamcorper ut eros. Quisque fringilla lectus sit amet tortor ultrices, ac vehicula dolor semper. Fusce varius mattis tortor. Aliquam ornare dui tempus gravida molestie. Phasellus porta imperdiet turpis ut feugiat. Nam lorem arcu, porttitor non iaculis sed, laoreet eu metus.','video/popUp/Sample.mp4')"/>
 					<div class="btnPhase2Holder click-through" id="btnPhase2Holder">
 						<img id='btnImgPhase2' class="animate__animated btnImgPhase2" src="img/phase1/btn-phase2.svg"/>
 
-						<video id="phase2Outline" class="phase1-video animate__animated click-through" muted>
-							<source src="./video/phase2Outline.webm" type="video/webm">
-							<source src="./video/phase2Outline.mov" type="video/mp4">
-							<source src="./video/phase2Outline.mp4" type="video/mp4; codecs=hevc">
-
-						</video>
 						<div id="santaCruzTextHolder" class="santaCruzTextHolder inter-semibold">
 							<div id="exploreText" class="click-through animate__animated santaCruzText animate__fast animate__zoomOut" style="transform-origin: 70% 150%;" >
 								Explore
@@ -136,6 +112,9 @@
 						<div id="btnPhase2" class="btnPhase2">
 						</div>
 					</div>
+
+					<object id='outlineSVG' type="image/svg+xml" class="outline" data="img/phase1/outline.svg"></object>
+
 				</div>
 			</div>
 		</div>
@@ -179,5 +158,6 @@
 		<script src="src/animations.js"></script>
 		<script src="src/eventListeners.js"></script>
 		<script src="src/utils.js"></script>
+		<script src="src/svg.js"></script>
 	</body>
 </html>

@@ -56,6 +56,17 @@ function randomAnimationSelect(array){
     return animation;
 }
 
+function getPolylineLength(polyline){
+    for (var i = 0 ; i < polyline.points.numberOfItems;i++) {
+        var pos = polyline.points.getItem(i);
+        if (i > 0) {
+            totalLength += Math.sqrt(Math.pow((pos.x - prevPos.x), 2) + Math.pow((pos.y - prevPos.y), 2));
+        }
+        prevPos = pos;
+    }
+    alert(totalLength);
+}
+
 //////////////// FIT Text ////////////////////////
 
 window.fitText( exploreText,0.5 );

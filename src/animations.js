@@ -1,7 +1,34 @@
+function fadeInCores(){
+    fadeInCity(compass,1000);
+    fadeInCity(casaGrande,1500);
+    fadeInCity(phoenix,3000);
+    fadeInCity(tucson,4000);
+    fadeInCity(roads,8000);
+    fadeInCity(transmissionLines,9000);
+    fadeInAnim(car01,13000);
+    fadeInAnim(car02,18000);
+
+    fadeInCSSAnim(plane,"planeAnim",4000);
+    fadeInCSSAnim(santaCruzOutlineSVG,"outlineAnim",10000);
+}
+
+function fadeInRoadSigns(){
+    bounceInRoadSign(roadsign387,8200);
+    bounceInRoadSign(roadsign84,8500);
+    bounceInRoadSign(roadsign10,8700);
+    bounceInRoadSign(roadsign8,8900);
+}
+
+function fadeInIcons(){
+    fadeInIcon(airport,7500);
+    fadeInIcon(btnFactory,9000);
+}
+
+
+
+
 function phase2Click(){
     console.log("start phase 2");
-     //Stop Video
-    stop(phase2Outline);
 
     btnPhase2Holder.classList.add("slide-fwd-center");
     exploreTextHolder.classList.add("fade-out");
@@ -66,22 +93,6 @@ function onPlaneAnimationEnded(event)
     }
 }
 
-/* function onPlaneAnimEnded(){
-
-    //Plane is first anim, trigger other anims now to get the ball rolling ;)
-    //Only repeat every 15~25 seconds
-    var randomDelay = Math.floor(Math.random() * (25000 - 15000) + 15000);
-    console.log("plane will play in " + randomDelay + " ms");
-    stop(plane);
-
-    //wait random and play again
-    var int = setInterval(() => {
-        play(plane);
-    }, randomDelay);
-    setTimeout(() => {
-        clearInterval(int);
-    }, randomDelay);
-} */
 
 function onPhase2OutlineEnded(){
     var randomDelay = Math.floor(Math.random() * 10000);
@@ -99,37 +110,7 @@ function onPhase2OutlineEnded(){
 function initPhase2Anim(){
     fadeInIcon(btnImgPhase2,10000);
     exploreTextAnim(exploreTextArray, 11000, "zoomOut");
-    fadeInAnim(phase2Outline,12000);
 }
-
-function fadeInCores(){
-    fadeInCity(compass,1000);
-    fadeInCity(casaGrande,1500);
-    fadeInCity(phoenix,3000);
-    fadeInCity(tucson,4000);
-    fadeInCity(roads,8000);
-    fadeInCity(transmissionLines,9000);
-    fadeInAnim(transmissionLinesAnim,9000);
-    fadeInAnim(truck,10000);
-    fadeInAnim(car01,13000);
-    fadeInAnim(car02,18000);
-    fadeInAnim(train,19000);
-
-    fadeInCSSAnim(plane,"planeAnim",4000);
-}
-
-function fadeInRoadSigns(){
-    bounceInRoadSign(roadsign387,8200);
-    bounceInRoadSign(roadsign84,8500);
-    bounceInRoadSign(roadsign10,8700);
-    bounceInRoadSign(roadsign8,8900);
-}
-
-function fadeInIcons(){
-    fadeInIcon(airport,7500);
-    fadeInIcon(btnFactory,9000);
-}
-
 
 function fadeInCity(element, delay){
 
