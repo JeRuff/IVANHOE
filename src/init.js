@@ -22,7 +22,7 @@ const casaGrande = document.getElementById("casaGrande");
 const phoenix = document.getElementById("phoenix");
 const tucson = document.getElementById("tucson");
 const roads = document.getElementById("roads");
-const transmissionLines = document.getElementById("transmissionLines");
+const transmissionLinesMap = document.getElementById("transmissionLinesMap");
 const compass = document.getElementById("compass");
 
 const roadsign8 = document.getElementById("road8");
@@ -35,18 +35,13 @@ const btnFactory = document.getElementById("btn-factory");
 const btnPhase2 = document.getElementById("btnPhase2");
 const btnPhase2Holder = document.getElementById("btnPhase2Holder");
 
-
-/* const plane = document.getElementById("planeAnim");
- */
 const plane = document.getElementById("planeSVG");
+const truck = document.getElementById("truckSVG");
+const train = document.getElementById("trainSVG");
+const car01 = document.getElementById("car01");
+const car02 = document.getElementById("car02");
 
-const truck = document.getElementById("truckAnim");
-const transmissionLinesAnim = document.getElementById("transmissionLinesAnim");
-const train = document.getElementById("trainAnim");
-const car01 = document.getElementById("car01Anim");
-const car02 = document.getElementById("car02Anim");
-
-//const phase2Outline = document.getElementById("phase2Outline");
+const transmissionLinesSVG = document.getElementById("transmissionLinesSVG");
 const santaCruzOutlineSVG = document.getElementById("outlineSVG");
 
 const phase2TextIn = document.getElementById("phase2TextIn");
@@ -58,8 +53,6 @@ const cruzText = document.getElementById("cruzText");
 const exploreTextArray = document.getElementById("santaCruzTextHolder").getElementsByTagName("div");
 const exploreTextHolder = document.getElementById("santaCruzTextHolder");
 
-//list of all animations
-const videoElementsArray = [car01,car02];
 
 //POP UP//
 const hoverBackground = document.getElementById("openPopup");
@@ -74,9 +67,6 @@ const popUpContent = document.getElementById("popUpContent");
 window.addEventListener('load', (event) => {
     console.log('page is fully loaded');
     document.querySelector('body').classList.add("loaded");
-
-    //Check OS and Browser and load animations accordingly
-    swapVideoSource();
 
     fadeInCores();
     fadeInRoadSigns();

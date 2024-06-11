@@ -1,7 +1,38 @@
 window.addEventListener('load', (event) => {
-    outlineSVGStyle();
-    transmissionLineSVGStyle();
+    car01SVGInitFollowPath();
+    car02SVGInitFollowPath();
+    truckSVGInitFollowPath();
 });
+
+transmissionLinesSVG.addEventListener("load", transmissionLineSVGStyle, false);
+outlineSVG.addEventListener("load", outlineSVGStyle, false);
+
+function car01SVGInitFollowPath()
+{
+    var svgObject = document.getElementById('car01Path').contentDocument;
+    var pathString = svgObject.getElementById('car01-path').getElementsByTagName('path')[0].getAttribute("d")
+    var car01 = document.getElementById('car01');
+
+   car01.setAttribute("style", "offset-path: path('" + pathString + "')");  
+}
+
+function car02SVGInitFollowPath()
+{
+    var svgObject = document.getElementById('car02Path').contentDocument;
+    var pathString = svgObject.getElementById('car02-path').getElementsByTagName('path')[0].getAttribute("d")
+    var car02 = document.getElementById('car02');
+
+    car02.setAttribute("style", "offset-path: path('" + pathString + "')");  
+}
+
+function truckSVGInitFollowPath()
+{
+    var svgObject = document.getElementById('truckPath').contentDocument;
+    var pathString = svgObject.getElementById('truck-path').getElementsByTagName('path')[0].getAttribute("d")
+    var truckSVG = document.getElementById('truckSVG');
+
+    truckSVG.setAttribute("style", "offset-path: path('" + pathString + "')");
+}
 
 
 function transmissionLineSVGStyle()
@@ -10,31 +41,17 @@ function transmissionLineSVGStyle()
     var styleTag = svgObject.getElementsByTagName('style');
 
     var transmissionLines = [svgObject.getElementById('TL-01'),svgObject.getElementById('TL-02'),svgObject.getElementById('TL-03'),svgObject.getElementById('TL-04')];
-    var outlineLength = transmissionLines[0].getTotalLength();
 
     styleTag[0].append(
         ".transmissionLineSVG {",
-        "stroke-dasharray: " + outlineLength + ";",
-        "stroke-dashoffset: " + outlineLength + ";",
-        "stroke-linecap: round;",
-        "stroke-linejoin: round;",
-        "stroke-width: 1%;",
-        "animation: dash 1s ease-in-out infinite;",
-        "filter: blur(3.5px);",
-    "}",
-    "@keyframes dash {",
-    "0% {",
-        "stroke-dashoffset: " + -outlineLength + ";",
-    "}",
-
-    "100% {",
-        "stroke-dashoffset: " + outlineLength + ";",
-    "}",
-  "}",
+            "stroke-linecap: round;",
+            "stroke-linejoin: round;",
+        "}",
     );
 
-    for (var i = 0; i < transmissionLines.length; i++) {
+    for (let i = 0; i < transmissionLines.length; i++) {
         transmissionLines[i].classList.add("transmissionLineSVG");
+        transmissionLines[i].addEventListener("animationend", onTransmissionLinesEnded, false);
     }
 }
 
@@ -46,8 +63,6 @@ function outlineSVGStyle()
     var glow = svgObject.getElementById('glow');
 
     var outlineLength = outline.getElementsByTagName("polyline")[0].getTotalLength();
-    //console.warn(outline.getElementsByTagName("polyline")[0].getTotalLength());
-
 
     styleTag[0].append(
 
@@ -57,7 +72,7 @@ function outlineSVGStyle()
             "stroke-linecap: round;",
             "stroke-linejoin: round;",
             "stroke-width: 3%;",
-            "animation: dash 5s ease infinite;",
+            "animation: dash 5s ease forwards;",
         "}",
 
         "@keyframes dash {",
@@ -76,11 +91,17 @@ function outlineSVGStyle()
             "stroke-linecap: round;",
             "stroke-linejoin: round;",
             "stroke-width: 3%;",
-            "animation: dash 5s ease infinite;",
+            "animation: dash 5s ease forwards;",
             "filter: blur(3.5px);",
         "}",
     );
 
     outline.classList.add("outlineSVG");
     glow.classList.add("glowSVG");
+
+    outline.addEventListener("animationend", function(event)
+    {
+        onSantaCruzOutlineEnded(event, outline, glow, "outlineSVG", "glowSVG");
+    });
+
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 482.08 915.47">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #999;
+        stroke-miterlimit: 10;
+        stroke-width: 3.8px;
+      }
+    </style>
+  </defs>
+  <g id="truck-path">
+    <path class="cls-1" d="m1.59,1.04c49.45,76.08,422.24,646.67,422.24,646.67,0,0,15.22,22.82,15.22,49.45v159.72c0,9.24,3.08,18.22,8.84,25.45,6.06,7.62,16.19,18.2,33.01,31.65"/>
+  </g>
+</svg>
