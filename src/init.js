@@ -2,6 +2,8 @@
 const viewport = document.getElementById('container');
 const content = document.getElementById('parent');
 
+var initWidth = 0, initHeight = 0;
+
 const sb = new ScrollBooster({
     viewport,
     content,
@@ -44,6 +46,10 @@ const car02 = document.getElementById("car02");
 const transmissionLinesSVG = document.getElementById("transmissionLinesSVG");
 const santaCruzOutlineSVG = document.getElementById("outlineSVG");
 
+const truckPath = document.getElementById("truckPath");
+const car01Path = document.getElementById("car01Path");
+const car02Path = document.getElementById("car02Path");
+
 const phase2TextIn = document.getElementById("phase2TextIn");
 const phase2TextOut = document.getElementById("phase2TextOut");
 
@@ -65,19 +71,19 @@ const popUpContent = document.getElementById("popUpContent");
 
 // Page is Loaded, Start Presentation
 window.addEventListener('load', (event) => {
+
     console.log('page is fully loaded');
     document.querySelector('body').classList.add("loaded");
 
-    fadeInCores();
-    fadeInRoadSigns();
-    fadeInIcons();
+    initWidth = document.getElementById("phase1itemsContainer").clientWidth;
+    initHeight = document.getElementById("phase1itemsContainer").clientHeight;
 
+    //Start layout sequence
+    startSequence();
     //Start Phase 2 Button anim loop
     initPhase2Anim();
 
-    //Plane animations + random loop of other animations
-/*     fadeInAnim(plane,1000);
- */});
+    });
 
 //POP UP//
 

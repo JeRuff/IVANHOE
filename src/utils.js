@@ -72,3 +72,20 @@ function getPolylineLength(polyline){
 window.fitText( exploreText,0.5 );
 window.fitText( santaText,0.5 );
 window.fitText( cruzText,0.5 );
+
+/////////////// SVG PATH RESPONSIVE /////////////
+
+function svgPathResponsivness(svgPath, svgTarget, initWidth, initHeight, newWidth, newHeight)
+{
+    
+    var responsivePath = new Meanderer({
+        path: svgPath,
+        width: initWidth,
+        height: initHeight
+    });
+
+    //console.log(responsivePath.generatePath(newWidth, newHeight));
+    svgTarget.setAttribute("style", "offset-path: path('" + responsivePath.generatePath(newWidth, newHeight) + "')");
+}
+
+

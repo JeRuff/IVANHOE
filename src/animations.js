@@ -1,13 +1,24 @@
-function fadeInCores(){
+function startSequence(){
+
+    startCSSAnim(plane,"planeAnim",500);
+
     fadeInCity(compass,1000);
     fadeInCity(casaGrande,1500);
     fadeInCity(phoenix,3000);
     fadeInCity(tucson,4000);
+
+    fadeInIcon(airport,7500);
+
     fadeInCity(roads,8000);
 
-    startCSSAnim(plane,"planeAnim",500);
+    bounceInRoadSign(roadsign387,8200);
+    bounceInRoadSign(roadsign84,8500);
+    bounceInRoadSign(roadsign10,8700);
+    bounceInRoadSign(roadsign8,8900);
 
     fadeInCity(transmissionLinesMap,9000);
+    fadeInIcon(btnFactory,9000);
+
     /* Transmission Lines goes right away when map is loaded, and then every 25 seconds */
     fadeInTLAnim(transmissionLinesSVG,9500);
     /* Semi-truck goes 1 second after the transmission lines starts and then every 18 seconds after it is out of screen */
@@ -18,21 +29,8 @@ function fadeInCores(){
     startCSSAnim(car02,"car02PathAnim",18500);
     /* Train starts 1 second after the bottom left car starts and then every 20 seconds after it is out of screen */
     startCSSAnim(train,"trainSVGAnim",19500);
-
-
 }
 
-function fadeInRoadSigns(){
-    bounceInRoadSign(roadsign387,8200);
-    bounceInRoadSign(roadsign84,8500);
-    bounceInRoadSign(roadsign10,8700);
-    bounceInRoadSign(roadsign8,8900);
-}
-
-function fadeInIcons(){
-    fadeInIcon(airport,7500);
-    fadeInIcon(btnFactory,9000);
-}
 
 function phase2Click(){
     console.log("start phase 2");
@@ -138,7 +136,13 @@ function onSantaCruzOutlineEnded(event, outline, glow, outlineCSSClass, glowCSSC
 function initPhase2Anim(){
     fadeInIcon(btnImgPhase2,10000);
     exploreTextAnim(exploreTextArray, 11000, "zoomOut");
-    startOutline(12000);
+    
+    var int = setInterval(() => {
+        outlineSVG.style.display = "block";
+    }, 11500);
+    setTimeout(() => {
+        clearInterval(int);
+    }, 11500);
 }
 
 function fadeInCity(element, delay){
@@ -248,16 +252,11 @@ function exploreTextAnim(elementArray,delay,anim){
     }
 }
 
-function startOutline(delay){
+function startOutline(outline, glow, outlineCSSClass, glowCSSClass){
 
-    var int = setInterval(() => {
-        outlineSVG.style.display = "block";
-        outline.classList.add(outlineCSSClass);
-        glow.classList.add(glowCSSClass);
-    }, delay);
-    setTimeout(() => {
-        clearInterval(int);
-    }, delay);
+    outlineSVG.style.display = "block";
+    outline.classList.add(outlineCSSClass);
+    glow.classList.add(glowCSSClass);
 }
 
 

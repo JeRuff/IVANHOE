@@ -1,11 +1,14 @@
 //EVENTS//
-/* plane.addEventListener("ended", onPlaneAnimEnded);
- */
-/* plane.addEventListener("animationend", onPlaneAnimationEnded, false);
- */btnPhase2.addEventListener("click", phase2Click);
+
+btnPhase2.addEventListener("click", phase2Click);
 btnFactory.addEventListener("mouseup", factoryMouseUp);
 btnFactory.addEventListener("click", factoryClick);
 
+transmissionLinesSVG.addEventListener("load", transmissionLineSVGStyle, false);
+santaCruzOutlineSVG.addEventListener("load", outlineSVGStyle, false);
+car01Path.addEventListener("load", car01SVGInitFollowPath, false);
+car02Path.addEventListener("load", car02SVGInitFollowPath, false);
+truckPath.addEventListener("load", truckSVGInitFollowPath, false);
 
 transmissionLinesSVG.addEventListener("animationend", onTransmissionLinesEnded, false);
 
@@ -30,9 +33,7 @@ train.addEventListener("animationend", function(event){
 });
 
 cruzText.addEventListener("animationend", function(event){
-        console.log("text animation from cruz event listener");
         exploreTextAnim(exploreTextArray,Math.floor(Math.random() * (5000 - 1000) + 5000),event.animationName);
-        //fadeInExploreText(elementArray[i],delay*((i/20)+1));
 });
 
 btnPhase2Holder.addEventListener("animationend", function(event){
@@ -42,3 +43,29 @@ btnPhase2Holder.addEventListener("animationend", function(event){
             window.location = 'phase2.html';
         }
   });
+
+
+window.addEventListener("resize", (event) => {
+
+/*  truckPath
+    truckSVG
+
+    car01Path
+
+    car02Path 
+*/
+
+    const container = document.getElementById("phase1itemsContainer");
+    const containerHeight = container.clientHeight;
+    const containerWidth = container.clientWidth;
+
+    const truckPathString = document.getElementById('truckPath').contentDocument.getElementById('truck-path').getElementsByTagName('path')[0].getAttribute("d");
+    const car01PathString = document.getElementById('car01Path').contentDocument.getElementById('car01-path').getElementsByTagName('path')[0].getAttribute("d");
+    const car02PathString = document.getElementById('car02Path').contentDocument.getElementById('car02-path').getElementsByTagName('path')[0].getAttribute("d");
+    //console.log(truckPathString);
+    svgPathResponsivness(truckPathString, truck, initWidth, initHeight, containerWidth, containerHeight);
+    svgPathResponsivness(car01PathString, car01, initWidth, initHeight, containerWidth, containerHeight);
+    svgPathResponsivness(car02PathString, car02, initWidth, initHeight, containerWidth, containerHeight);
+
+/*     svgPathResponsivness(truckPath, )
+ */});

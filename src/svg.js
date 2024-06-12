@@ -1,12 +1,3 @@
-window.addEventListener('load', (event) => {
-    car01SVGInitFollowPath();
-    car02SVGInitFollowPath();
-    truckSVGInitFollowPath();
-});
-
-transmissionLinesSVG.addEventListener("load", transmissionLineSVGStyle, false);
-outlineSVG.addEventListener("load", outlineSVGStyle, false);
-
 function car01SVGInitFollowPath()
 {
     var svgObject = document.getElementById('car01Path').contentDocument;
@@ -96,9 +87,7 @@ function outlineSVGStyle()
         "}",
     );
 
-    outline.classList.add("outlineSVG");
-    glow.classList.add("glowSVG");
-
+    startOutline(outline, glow, "outlineSVG", "glowSVG");
     outline.addEventListener("animationend", function(event)
     {
         onSantaCruzOutlineEnded(event, outline, glow, "outlineSVG", "glowSVG");
