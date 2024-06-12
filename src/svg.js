@@ -31,19 +31,12 @@ function transmissionLineSVGStyle()
     var svgObject = document.getElementById('transmissionLinesSVG').contentDocument;
     var styleTag = svgObject.getElementsByTagName('style');
 
-    var transmissionLines = [svgObject.getElementById('TL-01'),svgObject.getElementById('TL-02'),svgObject.getElementById('TL-03'),svgObject.getElementById('TL-04')];
-
     styleTag[0].append(
         ".transmissionLineSVG {",
             "stroke-linecap: round;",
             "stroke-linejoin: round;",
         "}",
     );
-
-    for (let i = 0; i < transmissionLines.length; i++) {
-        transmissionLines[i].classList.add("transmissionLineSVG");
-        transmissionLines[i].addEventListener("animationend", onTransmissionLinesEnded, false);
-    }
 }
 
 function outlineSVGStyle()

@@ -75,7 +75,7 @@ window.fitText( cruzText,0.5 );
 
 /////////////// SVG PATH RESPONSIVE /////////////
 
-function svgPathResponsivness(svgPath, svgTarget, initWidth, initHeight, newWidth, newHeight)
+function svgPathResponsivness(svgPath, svgTarget, cssTarget, initWidth, initHeight, newWidth, newHeight)
 {
     
     var responsivePath = new Meanderer({
@@ -84,7 +84,6 @@ function svgPathResponsivness(svgPath, svgTarget, initWidth, initHeight, newWidt
         height: initHeight
     });
 
-    //console.log(responsivePath.generatePath(newWidth, newHeight));
     svgTarget.setAttribute("style", "offset-path: path('" + responsivePath.generatePath(newWidth, newHeight) + "')");
 }
 
