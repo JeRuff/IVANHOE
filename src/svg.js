@@ -4,7 +4,15 @@ function car01SVGInitFollowPath()
     var pathString = svgObject.getElementById('car01-path').getElementsByTagName('path')[0].getAttribute("d")
     var car01 = document.getElementById('car01');
 
-   car01.setAttribute("style", "offset-path: path('" + pathString + "')");  
+    var responsivePath = new Meanderer({
+        path: pathString,
+        width: designSourceWidth,
+        height: designSourceHeight
+    });
+
+    console.warn(initWidth, initHeight);
+
+    car01.setAttribute("style", "offset-path: path('" + responsivePath.generatePath(initWidth, initHeight) + "')");
 }
 
 function car02SVGInitFollowPath()
@@ -13,8 +21,13 @@ function car02SVGInitFollowPath()
     var pathString = svgObject.getElementById('car02-path').getElementsByTagName('path')[0].getAttribute("d")
     var car02 = document.getElementById('car02');
 
-    car02.setAttribute("style", "offset-path: path('" + pathString + "')");  
-}
+    var responsivePath = new Meanderer({
+        path: pathString,
+        width: designSourceWidth,
+        height: designSourceHeight
+    });
+
+    car02.setAttribute("style", "offset-path: path('" + responsivePath.generatePath(initWidth, initHeight) + "')");}
 
 function truckSVGInitFollowPath()
 {
@@ -22,7 +35,13 @@ function truckSVGInitFollowPath()
     var pathString = svgObject.getElementById('truck-path').getElementsByTagName('path')[0].getAttribute("d")
     var truckSVG = document.getElementById('truckSVG');
 
-    truckSVG.setAttribute("style", "offset-path: path('" + pathString + "')");
+    var responsivePath = new Meanderer({
+        path: pathString,
+        width: designSourceWidth,
+        height: designSourceHeight
+    });
+
+    truckSVG.setAttribute("style", "offset-path: path('" + responsivePath.generatePath(initWidth, initHeight) + "')");
 }
 
 
@@ -85,5 +104,4 @@ function outlineSVGStyle()
     {
         onSantaCruzOutlineEnded(event, outline, glow, "outlineSVG", "glowSVG");
     });
-
 }

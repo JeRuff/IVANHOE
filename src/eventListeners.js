@@ -6,9 +6,6 @@ btnFactory.addEventListener("click", factoryClick);
 
 transmissionLinesSVG.addEventListener("load", transmissionLineSVGStyle, false);
 santaCruzOutlineSVG.addEventListener("load", outlineSVGStyle, false);
-car01Path.addEventListener("load", car01SVGInitFollowPath, false);
-car02Path.addEventListener("load", car02SVGInitFollowPath, false);
-truckPath.addEventListener("load", truckSVGInitFollowPath, false);
 
 transmissionLinesSVG.addEventListener("animationend", onTransmissionLinesEnded, false);
 
@@ -47,14 +44,6 @@ btnPhase2Holder.addEventListener("animationend", function(event){
 
 window.addEventListener("resize", (event) => {
 
-/*  truckPath
-    truckSVG
-
-    car01Path
-
-    car02Path 
-*/
-
     const container = document.getElementById("phase1itemsContainer");
     const containerHeight = container.clientHeight;
     const containerWidth = container.clientWidth;
@@ -62,10 +51,8 @@ window.addEventListener("resize", (event) => {
     const truckPathString = document.getElementById('truckPath').contentDocument.getElementById('truck-path').getElementsByTagName('path')[0].getAttribute("d");
     const car01PathString = document.getElementById('car01Path').contentDocument.getElementById('car01-path').getElementsByTagName('path')[0].getAttribute("d");
     const car02PathString = document.getElementById('car02Path').contentDocument.getElementById('car02-path').getElementsByTagName('path')[0].getAttribute("d");
-    //console.log(truckPathString);
+
     svgPathResponsivness(truckPathString, truck, "truckSVG",initWidth, initHeight, containerWidth, containerHeight);
     svgPathResponsivness(car01PathString, car01, "car01SVG",initWidth, initHeight, containerWidth, containerHeight);
     svgPathResponsivness(car02PathString, car02, "car02SVG",initWidth, initHeight, containerWidth, containerHeight);
-
-/*     svgPathResponsivness(truckPath, )
- */});
+});

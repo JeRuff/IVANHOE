@@ -7,20 +7,20 @@ function startSequence(){
     fadeInCity(phoenix,3000);
     fadeInCity(tucson,4000);
 
-    fadeInIcon(airport,7500);
+    fadeInIcon(airport,8500);
 
-    fadeInCity(roads,8000);
+    fadeInCity(roads,9000);
 
-    bounceInRoadSign(roadsign387,8200);
-    bounceInRoadSign(roadsign84,8500);
-    bounceInRoadSign(roadsign10,8700);
-    bounceInRoadSign(roadsign8,8900);
+    bounceInRoadSign(roadsign387,9100);
+    bounceInRoadSign(roadsign84,9300);
+    bounceInRoadSign(roadsign10,9500);
+    bounceInRoadSign(roadsign8,9700);
 
-    fadeInCity(transmissionLinesMap,9000);
-    fadeInIcon(btnFactory,9000);
+    fadeInCity(transmissionLinesMap,10000);
+    fadeInIcon(btnFactory,10500);
 
     /* Transmission Lines goes right away when map is loaded, and then every 25 seconds */
-    fadeInTLAnim(transmissionLinesSVG,9500);
+    fadeInTLAnim(transmissionLinesSVG,11000);
     /* Semi-truck goes 1 second after the transmission lines starts and then every 18 seconds after it is out of screen */
     startCSSAnim(truck,"truckFollowPath",10500);
     /* Top left car goes 3 seconds after the semi truck starts and then every 18 seconds after it is out of screen */
@@ -29,6 +29,9 @@ function startSequence(){
     startCSSAnim(car02,"car02PathAnim",18500);
     /* Train starts 1 second after the bottom left car starts and then every 20 seconds after it is out of screen */
     startCSSAnim(train,"trainSVGAnim",19500);
+
+    //Start Phase 2 Button anim loop
+    initPhase2Anim(11000);
 }
 
 
@@ -131,18 +134,17 @@ function onSantaCruzOutlineEnded(event, outline, glow, outlineCSSClass, glowCSSC
         }
 }
 
+function initPhase2Anim(delay){
 
-
-function initPhase2Anim(){
-    fadeInIcon(btnImgPhase2,10000);
-    exploreTextAnim(exploreTextArray, 11000, "zoomOut");
+    fadeInIcon(btnImgPhase2,delay);
+    exploreTextAnim(exploreTextArray, delay+1000, "zoomOut");
     
     var int = setInterval(() => {
         outlineSVG.style.display = "block";
-    }, 11500);
+    }, delay+1000);
     setTimeout(() => {
         clearInterval(int);
-    }, 11500);
+    }, delay+1000);
 }
 
 function fadeInCity(element, delay){

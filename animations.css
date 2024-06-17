@@ -71,10 +71,11 @@
     position: absolute;
     width: 2.5%;
     aspect-ratio: 1 / 1;
-    top: 70.5%;
+    top: 70.7%;
     left: -10%;
     transform-origin: center center;
     transform: rotate(90deg);
+    opacity: 0;
 }
 
 .car02Path{
@@ -96,7 +97,10 @@
         offset-distance: 100%; 
         opacity: 0;
     }
-    5%{
+    15%{
+        opacity: 0;
+    }
+    20%{
         opacity: 1;
     }
     50%{
@@ -105,7 +109,7 @@
     80%{
         opacity: 1;
     }
-    83%{
+    95%{
         opacity: 0;
     }
     100% { 
@@ -119,7 +123,10 @@
         offset-distance: 100%; 
         opacity: 0;
     }
-    5%{
+    15%{
+        opacity: 0;
+    }
+    20%{
         opacity: 1;
     }
     50%{
@@ -128,7 +135,7 @@
     80%{
         opacity: 1;
     }
-    83%{
+    95%{
         opacity: 0;
     }
     100% { 

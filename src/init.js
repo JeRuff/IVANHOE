@@ -2,7 +2,12 @@
 const viewport = document.getElementById('container');
 const content = document.getElementById('parent');
 
+//Canvas dimensions
 var initWidth = 0, initHeight = 0;
+
+//2D source resolution
+const designSourceWidth = 1113;
+const designSourceHeight = 626;
 
 const sb = new ScrollBooster({
     viewport,
@@ -78,12 +83,14 @@ window.addEventListener('load', (event) => {
     initWidth = document.getElementById("phase1itemsContainer").clientWidth;
     initHeight = document.getElementById("phase1itemsContainer").clientHeight;
 
+    car01SVGInitFollowPath();
+    car02SVGInitFollowPath();
+    truckSVGInitFollowPath();
+
     //Start layout sequence
     startSequence();
-    //Start Phase 2 Button anim loop
-    initPhase2Anim();
+});
 
-    });
 
 //POP UP//
 
