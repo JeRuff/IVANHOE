@@ -1,2 +1,2 @@
-# Trevali-Website
- Animated website for Trevali
+# WIP-Ivanhoe Interactive
+ Animated website for Ivanhoe
