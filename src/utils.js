@@ -56,8 +56,35 @@ function randomAnimationSelect(array){
     return animation;
 }
 
+function getPolylineLength(polyline){
+    for (var i = 0 ; i < polyline.points.numberOfItems;i++) {
+        var pos = polyline.points.getItem(i);
+        if (i > 0) {
+            totalLength += Math.sqrt(Math.pow((pos.x - prevPos.x), 2) + Math.pow((pos.y - prevPos.y), 2));
+        }
+        prevPos = pos;
+    }
+    alert(totalLength);
+}
+
 //////////////// FIT Text ////////////////////////
 
 window.fitText( exploreText,0.5 );
 window.fitText( santaText,0.5 );
 window.fitText( cruzText,0.5 );
+
+/////////////// SVG PATH RESPONSIVE /////////////
+
+function svgPathResponsivness(svgPath, svgTarget, cssTarget, initWidth, initHeight, newWidth, newHeight)
+{
+    
+    var responsivePath = new Meanderer({
+        path: svgPath,
+        width: initWidth,
+        height: initHeight
+    });
+
+    svgTarget.setAttribute("style", "offset-path: path('" + responsivePath.generatePath(newWidth, newHeight) + "')");
+}
+
+

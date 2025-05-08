@@ -1,10 +1,45 @@
+function startSequence(){
+
+    startCSSAnim(plane,"planeAnim",500);
+
+    fadeInCity(compass,1000);
+    fadeInCity(casaGrande,1500);
+    fadeInCity(phoenix,3000);
+    fadeInCity(tucson,4000);
+
+    fadeInIcon(airport,8500);
+
+    fadeInCity(roads,9000);
+
+    bounceInRoadSign(roadsign387,9100);
+    bounceInRoadSign(roadsign84,9300);
+    bounceInRoadSign(roadsign10,9500);
+    bounceInRoadSign(roadsign8,9700);
+
+    fadeInCity(transmissionLinesMap,10000);
+    fadeInIcon(btnFactory,10500);
+
+    /* Transmission Lines goes right away when map is loaded, and then every 25 seconds */
+    fadeInTLAnim(transmissionLinesSVG,11000);
+    /* Semi-truck goes 1 second after the transmission lines starts and then every 18 seconds after it is out of screen */
+    startCSSAnim(truck,"truckFollowPath",10500);
+    /* Top left car goes 3 seconds after the semi truck starts and then every 18 seconds after it is out of screen */
+    startCSSAnim(car01,"car01PathAnim",13500);
+    /* Bottom left car goes 5 seconds after the top left car starts and then every 12 seconds after it is out of screen*/
+    startCSSAnim(car02,"car02PathAnim",18500);
+    /* Train starts 1 second after the bottom left car starts and then every 20 seconds after it is out of screen */
+    startCSSAnim(train,"trainSVGAnim",19500);
+
+    //Start Phase 2 Button anim loop
+    initPhase2Anim(11000);
+}
+
+
 function phase2Click(){
     console.log("start phase 2");
-     //Stop Video
-    stop(phase2Outline);
 
     btnPhase2Holder.classList.add("slide-fwd-center");
-    exploreTextHolder.classList.add("fade-out");
+    exploreTextHolder.classList.add("fadeOut");
 }
 
 function factoryClick(){
@@ -32,81 +67,85 @@ function playNextAnim(element){
     play(randomAnimationSelect(tempArray));
 }
 
-function onAnimationEnded(element, delay){
-    console.log(element.id + " will play in " + delay + " ms");
-    // Only plays every 25 seconds
-    stop(element);
-    //wait delay and play again
+function onAnimationEnded(event, element, CSSclass, delay){
+    console.log(element.id + " animation " + ": " + CSSclass + " will play in " + delay);
+    element.classList.remove(CSSclass);
+
+    //wait 18 seconds and play again
     var int = setInterval(() => {
-        play(element);
-    }, 25000);
+        element.classList.add(CSSclass);
+    }, delay);
     setTimeout(() => {
         clearInterval(int);
-    }, 25000);
+    }, delay);
 }
 
-function onPlaneAnimEnded(){
+function onPlaneAnimationEnded(event)
+{
+    if(event.type == "animationend")
+    {
+        plane.classList.remove("planeAnim");
+        var randomDelay = Math.floor(Math.random() * (25000 - 15000) + 15000);
+        console.log("plane will play in " + randomDelay + " ms");
 
-    //Plane is first anim, trigger other anims now to get the ball rolling ;)
-    //Only repeat every 15~25 seconds
-    var randomDelay = Math.floor(Math.random() * (25000 - 15000) + 15000);
-    console.log("plane will play in " + randomDelay + " ms");
-    stop(plane);
-
-    //wait random and play again
-    var int = setInterval(() => {
-        play(plane);
-    }, randomDelay);
-    setTimeout(() => {
-        clearInterval(int);
-    }, randomDelay);
+        //wait random and play again
+        var int = setInterval(() => {
+            plane.classList.add("planeAnim");
+        }, randomDelay);
+        setTimeout(() => {
+            clearInterval(int);
+        }, randomDelay);
+    }
 }
 
-function onPhase2OutlineEnded(){
+
+function onTransmissionLinesEnded(event){
+    if(event.type == "animationend" && event.animationName == "clipPathAnim")
+        {
+            fadeOutTLAnim(transmissionLinesSVG,0);
+            var int = setInterval(() => {
+                fadeInTLAnim(transmissionLinesSVG,0);
+            }, 25000);
+            setTimeout(() => {
+                clearInterval(int);
+            }, 25000);
+        }
+}
+
+function onSantaCruzOutlineEnded(event, outline, glow, outlineCSSClass, glowCSSClass){
     var randomDelay = Math.floor(Math.random() * 10000);
-    stop(phase2Outline);
-    //wait random and play again
+
+    outlineSVG.style.display = "none";
+    outline.classList.remove(outlineCSSClass);
+    glow.classList.remove(glowCSSClass);
+
+    if(event.type == "animationend" && event.animationName == "dash")
+        {
+            
+            var int = setInterval(() => {
+                outlineSVG.style.display = "block";
+                outline.classList.add(outlineCSSClass);
+                glow.classList.add(glowCSSClass);
+            }, randomDelay);
+           
+            setTimeout(() => {
+                clearInterval(int);
+            }, randomDelay);
+        }
+}
+
+function initPhase2Anim(delay){
+
+    fadeInIcon(btnImgPhase2,delay);
+    exploreTextAnim(exploreTextArray, delay+1000, "zoomOut");
+    
     var int = setInterval(() => {
-        play(phase2Outline);
-    }, randomDelay);
+        outlineSVG.style.display = "block";
+    }, delay+1000);
     setTimeout(() => {
         clearInterval(int);
-    }, randomDelay);
-
+    }, delay+1000);
 }
-
-function initPhase2Anim(){
-    fadeInIcon(btnImgPhase2,10000);
-    exploreTextAnim(exploreTextArray, 11000, "zoomOut");
-    fadeInAnim(phase2Outline,12000);
-}
-
-function fadeInCores(){
-    fadeInCity(compass,1000);
-    fadeInCity(casaGrande,1500);
-    fadeInCity(phoenix,3000);
-    fadeInCity(tucson,4000);
-    fadeInCity(roads,8000);
-    fadeInCity(transmissionLines,9000);
-    fadeInAnim(transmissionLinesAnim,9000);
-    fadeInAnim(truck,10000);
-    fadeInAnim(car01,13000);
-    fadeInAnim(car02,18000);
-    fadeInAnim(train,19000);
-}
-
-function fadeInRoadSigns(){
-    bounceInRoadSign(roadsign387,8200);
-    bounceInRoadSign(roadsign84,8500);
-    bounceInRoadSign(roadsign10,8700);
-    bounceInRoadSign(roadsign8,8900);
-}
-
-function fadeInIcons(){
-    fadeInIcon(airport,7500);
-    fadeInIcon(btnFactory,9000);
-}
-
 
 function fadeInCity(element, delay){
 
@@ -149,6 +188,42 @@ function fadeInAnim(element, delay){
     }, delay);
 }
 
+function startCSSAnim(element,animClass, delay){
+    console.log("playing " + element.id + " in " + delay)
+    var int = setInterval(() => {
+        element.classList.add(animClass);
+    }, delay);
+    setTimeout(() => {
+        clearInterval(int);
+    }, delay);
+}
+
+function fadeInTLAnim(element, delay){
+    var op = 0.001;  // initial opacity
+
+    var int = setInterval(() => {
+        element.style.display = 'block';
+        element.classList.add("TLClipPath");
+    }, delay);
+    setTimeout(() => {
+        clearInterval(int);
+    }, delay);
+}
+
+function fadeOutTLAnim(element)
+{
+    element.style.display = 'none';
+    element.classList.remove("TLClipPath");
+
+    var int = setInterval(() => {
+        element.style.display = 'block';
+        element.classList.add("TLClipPath");
+    }, 25000);
+    setTimeout(() => {
+        clearInterval(int);
+    }, 25000);
+}
+
 function fadeInExploreText(element, delay){
     var int = setInterval(() => {
         element.classList.add("animate__zoomIn");
@@ -171,13 +246,19 @@ function fadeOutExploreText(element, delay){
 
 
 function exploreTextAnim(elementArray,delay,anim){
-    console.log("text anim " + anim);
     for (var i = 0; i < elementArray.length; i++) {
         if(anim == "zoomOut")
             fadeInExploreText(elementArray[i],delay*((i/20)+1));
         else
             fadeOutExploreText(elementArray[i],delay*((i/20)+1));
     }
+}
+
+function startOutline(outline, glow, outlineCSSClass, glowCSSClass){
+
+    outlineSVG.style.display = "block";
+    outline.classList.add(outlineCSSClass);
+    glow.classList.add(glowCSSClass);
 }
 
 

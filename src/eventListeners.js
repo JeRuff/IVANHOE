@@ -1,38 +1,36 @@
 //EVENTS//
-plane.addEventListener("ended", onPlaneAnimEnded);
+
 btnPhase2.addEventListener("click", phase2Click);
-phase2Outline.addEventListener("ended", onPhase2OutlineEnded);
 btnFactory.addEventListener("mouseup", factoryMouseUp);
 btnFactory.addEventListener("click", factoryClick);
 
+transmissionLinesSVG.addEventListener("load", transmissionLineSVGStyle, false);
+santaCruzOutlineSVG.addEventListener("load", outlineSVGStyle, false);
 
-/* truck.addEventListener("ended", onTruckEnded);
-transmissionLinesAnim.addEventListener("ended", onTransmissionLinesEnded);
-car01.addEventListener("ended", onCar01Ended);
-car02.addEventListener("ended", onCar02Ended);
-train.addEventListener("ended", onTrainAnimEnded); */
+transmissionLinesSVG.addEventListener("animationend", onTransmissionLinesEnded, false);
 
-truck.addEventListener("ended", function (){
-    onAnimationEnded(truck, 18000)
-});
-transmissionLinesAnim.addEventListener("ended",  function (){
-    onAnimationEnded(transmissionLinesAnim, 25000)
-});
-car01.addEventListener("ended",   function (){
-    onAnimationEnded(car01, 18000)
-});
-car02.addEventListener("ended",   function (){
-    onAnimationEnded(car02, 12000)
-});
-train.addEventListener("ended",   function (){
-    onAnimationEnded(train, 20000)
+plane.addEventListener("animationend", function(event){
+    onAnimationEnded(event, this, "planeAnim",Math.floor(Math.random() * (25000 - 15000) + 15000));
 });
 
+truck.addEventListener("animationend", function(event){
+    onAnimationEnded(event, this, "truckFollowPath",18000);
+});
+
+car01.addEventListener("animationend", function(event){
+    onAnimationEnded(event, this, "car01PathAnim",18000);
+});
+
+car02.addEventListener("animationend", function(event){
+    onAnimationEnded(event, this, "car02PathAnim",12000);
+});
+
+train.addEventListener("animationend", function(event){
+    onAnimationEnded(event, this, "trainSVGAnim",20000);
+});
 
 cruzText.addEventListener("animationend", function(event){
-        console.log("text animation from cruz event listener");
         exploreTextAnim(exploreTextArray,Math.floor(Math.random() * (5000 - 1000) + 5000),event.animationName);
-        //fadeInExploreText(elementArray[i],delay*((i/20)+1));
 });
 
 btnPhase2Holder.addEventListener("animationend", function(event){
@@ -42,3 +40,19 @@ btnPhase2Holder.addEventListener("animationend", function(event){
             window.location = 'phase2.html';
         }
   });
+
+
+window.addEventListener("resize", (event) => {
+
+    const container = document.getElementById("phase1itemsContainer");
+    const containerHeight = container.clientHeight;
+    const containerWidth = container.clientWidth;
+
+    const truckPathString = document.getElementById('truckPath').contentDocument.getElementById('truck-path').getElementsByTagName('path')[0].getAttribute("d");
+    const car01PathString = document.getElementById('car01Path').contentDocument.getElementById('car01-path').getElementsByTagName('path')[0].getAttribute("d");
+    const car02PathString = document.getElementById('car02Path').contentDocument.getElementById('car02-path').getElementsByTagName('path')[0].getAttribute("d");
+
+    svgPathResponsivness(truckPathString, truck, "truckSVG",initWidth, initHeight, containerWidth, containerHeight);
+    svgPathResponsivness(car01PathString, car01, "car01SVG",initWidth, initHeight, containerWidth, containerHeight);
+    svgPathResponsivness(car02PathString, car02, "car02SVG",initWidth, initHeight, containerWidth, containerHeight);
+});

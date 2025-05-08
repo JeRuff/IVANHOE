@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 608.5 464.99">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #29a7de;
+        stroke-miterlimit: 10;
+        stroke-width: 5px;
+      }
+    </style>
+  </defs>
+  <g id="Transmission_Lines" data-name="Transmission Lines">
+    <g>
+      <polyline id="TL-04" class="cls-1" points="0 120.99 120.66 120.99 266 238.99 373 238.99 404.5 257.49 404.5 362.49 456.96 463.84"/>
+      <polyline id="TL-03" class="cls-1" points="59.5 121.49 59.5 132.76 81.5 160.49 81.5 343.49 91.75 356.24 189.67 356.24 189.67 365.01 394.5 365.01 417.5 369.49 429.5 364.49 511.5 364.49"/>
+      <path id="TL-02" class="cls-1" d="m370.5,199.09v-26.6l57.78,144h180.22M111.96,2.84l267,202.38v37.12"/>
+      <polyline id="TL-01" class="cls-1" points="364.96 1.84 409.4 42.49 607.5 42.49"/>
+    </g>
+  </g>
+</svg>

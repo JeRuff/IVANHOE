@@ -1,0 +1,408 @@
+/********************** CAR 01 ***************************/
+
+.car01SVG{
+    position: absolute;
+    width: 2.5%;
+    aspect-ratio: 1 / 1;
+    top: -5%;
+    left: 4.5%;
+    transform-origin: center center;
+    transform: rotate(90deg);
+    opacity: 0;
+}
+
+.car01Path{
+    position: absolute;
+    top: -4.5%;
+    left: -9%;
+    width: 43%;
+    aspect-ratio: 1 / 1;
+    opacity: 0;
+}
+
+.car01PathAnim{
+    -webkit-animation: car01PathAnim 11s forwards linear;
+    animation: car01PathAnim 11s forwards linear;
+}
+
+@-webkit-keyframes car01PathAnim {
+    0% { 
+        offset-distance: 100%; 
+        opacity: 0;
+    }
+    15%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 1;
+    }
+    100% { 
+        offset-distance: 0%;
+        opacity: 0;
+    }
+}
+
+@keyframes car01PathAnim {
+    0% { 
+        offset-distance: 100%; 
+        opacity: 0;
+    }
+    15%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 1;
+    }
+    100% { 
+        offset-distance: 0%;
+        opacity: 0;
+    }
+}
+
+/********************** CAR 02 ***************************/
+
+.car02SVG{
+    position: absolute;
+    width: 2.5%;
+    aspect-ratio: 1 / 1;
+    top: 70.7%;
+    left: -10%;
+    transform-origin: center center;
+    transform: rotate(90deg);
+    opacity: 0;
+}
+
+.car02Path{
+    position: absolute;
+    top: -4.5%;
+    left: -8.4%;
+    width: 90%;
+    aspect-ratio: 1 / 1;
+    opacity: 0;
+}
+
+.car02PathAnim{
+    -webkit-animation: car02PathAnim 13s forwards linear;
+    animation: car02PathAnim 13s forwards linear;
+}
+
+@-webkit-keyframes car02PathAnim {
+    0% { 
+        offset-distance: 100%; 
+        opacity: 0;
+    }
+    15%{
+        opacity: 0;
+    }
+    20%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 1;
+    }
+    80%{
+        opacity: 1;
+    }
+    95%{
+        opacity: 0;
+    }
+    100% { 
+        offset-distance: 0%; 
+        opacity: 0;
+    }
+}
+
+@keyframes car02PathAnim {
+    0% { 
+        offset-distance: 100%; 
+        opacity: 0;
+    }
+    15%{
+        opacity: 0;
+    }
+    20%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 1;
+    }
+    80%{
+        opacity: 1;
+    }
+    95%{
+        opacity: 0;
+    }
+    100% { 
+        offset-distance: 0%; 
+        opacity: 0;
+    }
+}
+
+/********************** TRAIN ***************************/
+
+.trainSVG{
+    position: absolute;
+    width: 11%;
+    aspect-ratio: 1 / 1;
+    top: 75%;
+    left: 84%;
+    opacity: 0;
+}
+
+.trainSVGAnim{
+    -webkit-animation: trainSVGAnim 10s infinite linear;
+    animation: trainSVGAnim 10s infinite linear;
+}
+
+@-webkit-keyframes trainSVGAnim {
+    0% {
+        -webkit-transform: translate(0%, 0%);
+                transform: translate(0%, 0%);
+        opacity: 0;
+      }
+    10%{
+        opacity: 1;
+    }
+    80%{
+        opacity: 1;
+    }
+    85%{
+        opacity: 0;
+    }
+      100%{
+        -webkit-transform: translate(-591%, -450%);
+                transform: translate(-591%, -450%);
+        opacity: 0;
+
+      }
+  }
+
+  @keyframes trainSVGAnim {
+    0% {
+        -webkit-transform: translate(0%, 0%);
+                transform: translate(0%, 0%);
+        opacity: 0;
+      }
+    10%{
+        opacity: 1;
+    }
+    80%{
+        opacity: 1;
+    }
+    85%{
+        opacity: 0;
+    }
+      100%{
+        -webkit-transform: translate(-591%, -450%);
+                transform: translate(-591%, -450%);
+        opacity: 0;
+
+      }
+  }
+
+/********************** TRUCK ***************************/
+
+.truckSVG{
+    position: absolute;
+    width: 1.3%;
+    top: -64%;
+    left: 39.8%;
+    transform: rotate(90deg);
+}
+
+.truckPath{
+    position: absolute;
+    top: -63.5%;
+    left: 20.5%;
+    width: 82%;
+    aspect-ratio: 1 / 1;
+    opacity: 0;
+}
+
+.truckFollowPath{
+    -webkit-animation: truckFollowPath 15s forwards linear;
+    animation: truckFollowPath 15s forwards linear;
+}
+
+@-webkit-keyframes truckFollowPath {
+    0% { 
+        offset-distance: 100%; 
+        opacity: 0;
+    }
+    5%{
+        opacity: 1;
+    }
+    45%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100% { 
+        offset-distance: 0%; 
+        opacity: 0;
+    }
+}
+
+@keyframes truckFollowPath {
+    0% { 
+        offset-distance: 100%; 
+        opacity: 0;
+    }
+    5%{
+        opacity: 1;
+    }
+    45%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100% { 
+        offset-distance: 0%; 
+        opacity: 0;
+    }
+}
+
+/********************** TRANSMISSION ***************************/
+
+.transmissionLines{
+    position: absolute;
+    width: 100%;
+    height: 74%;
+    top: 13%;
+    left: 6%;
+    filter: blur(3.5px);
+    stroke-width: 1%;
+    display: none;
+}
+
+.TLClipPath{
+    animation: clipPathAnim 3s infinite cubic-bezier(1, 0.01, 0.19, 0.96);
+    clip-path: polygon(45% 0%, 60% 0%, 60% 100%, 45% 100%);
+    animation-iteration-count: 2;
+}
+
+@-webkit-keyframes clipPathAnim {
+    0% { 
+        clip-path: polygon(85% 0%, 100% 0%, 100% 100%, 85% 100%);
+    }
+
+    100% { 
+        clip-path: polygon(0 0, 15% 0, 15% 100%, 0 100%);
+    }
+}
+
+/* clip-path: polygon(45% 0%, 60% 0%, 60% 100%, 45% 100%); */
+@keyframes clipPathAnim {
+    0% { 
+        clip-path: polygon(85% 0%, 100% 0%, 100% 100%, 85% 100%);
+    }
+
+    100% { 
+        clip-path: polygon(0 0, 15% 0, 15% 100%, 0 100%);
+    }
+}
+
+
+
+/********************** OUTLINE ***************************/
+
+.outline{
+    position: absolute;
+    width: 27%;
+    height: 27%;
+    top: 33.1%;
+    left: 34.7%;
+    display: none;
+}
+
+.outlineAnim{
+    -webkit-animation: outlineAnim 1s normal ease-in-out;
+    animation: outlineAnim 1s normal ease-in-out;
+}
+
+
+@-webkit-keyframes outlineAnim {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@keyframes outlineAnim {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+/********************** PLANE ***************************/
+
+.planeAnim{
+    -webkit-animation: planeAnim 20s normal ease-in-out;
+    animation: planeAnim 20s normal ease-in-out;
+}
+
+.planeSVG{
+    width: 10%;
+    height: 10%;
+    position: absolute;
+    left: 60.6%;
+    top: 110%;
+    transform-origin: center center;
+    opacity: 0;
+}
+
+@-webkit-keyframes planeAnim {
+    0% {
+        -webkit-transform: translate(0%, 0%) scale(1,1);
+                transform: translate(0%, 0%) scale(1,1);
+      }
+      100% {
+        -webkit-transform: translate(0%, -10%) scale(1,1);
+                transform: translate(0%, -10%)scale(1,1);
+      }
+  }
+  @keyframes planeAnim {
+    0% {
+      -webkit-transform: translate(0%, 0%) scale(1,1);
+              transform: translate(0%, 0%) scale(1,1);
+        opacity: 0;
+
+    }
+
+    20% { 
+        opacity: 1;
+    }
+
+    40% {
+      -webkit-transform: translate(0%, -875%) scale(.4,.4);
+              transform: translate(0%, -875%) scale(.4,.4);
+    }
+
+    60% {
+        -webkit-transform: translate(0%, -875%) scale(.4,.4);
+                transform: translate(0%, -875%) scale(.4,.4);
+        opacity: 1;
+      }
+    85%
+    {
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translate(0%, -1500%) scale(1,1);
+                transform: translate(0%, -1500%) scale(1,1);
+      } 
+  }
+
